@@ -20,6 +20,11 @@ public class AdKeyword {
 
 	}
 
+	public AdKeyword(String keyword, Ad ad) {
+		this.keyword = keyword;
+		this.ad = ad;
+	}
+
 	public Long getId() {
 		return id;
 	}

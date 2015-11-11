@@ -21,6 +21,12 @@ public class Ad {
 	public Ad() {
 
 	}
+	
+	public Ad(String name, String description, Double price) {
+		this.name = name;
+		this.descrption = description;
+		this.price = price;
+	}
 
 	public Long getId() {
 		return id;
