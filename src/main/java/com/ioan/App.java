@@ -1,54 +1,65 @@
 package com.ioan;
 
 import java.util.List;
- 
+
+import javassist.compiler.ast.Keyword;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
- 
+
+import com.ioan.dao.AdDao;
+import com.ioan.dao.AdKeywordDao;
 import com.ioan.dao.CategoryDao;
+import com.ioan.model.Ad;
+import com.ioan.model.AdKeyword;
 import com.ioan.model.Category;
- 
+import com.ioan.util.Util;
+
 /**
  * Standalone application with Spring Data JPA, Hibernate and Maven
  * 
- * @author DevCrumb.com
  */
 public class App {
-    public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "applicationContext.xml");
-        CategoryDao dao = context.getBean(CategoryDao.class);
- 
-        Category auto = new Category("Auto3");
-        Category imobiliare = new Category("Imobiliare");
- 
-        // Add new Category records
-        dao.save(auto);
-        dao.save(imobiliare);
- 
-        // Count Person records
-        System.out.println("Count Category records: " + dao.count());
- 
-        // Print all records
-        List<Category> categories = (List<Category>) dao.findAll();
-        for (Category category : categories) {
-            System.out.println(category);
-        }
- 
-        // Find Person by surname
-        System.out.println("Find by auto 'Auto': "  + dao.findByName("Auto"));
- 
-        // Update Person
-        imobiliare.setName("Imobiliar");
-        dao.save(imobiliare);
- 
-        System.out.println("Find by id 2: " + dao.findOne(2L));
- 
-        // Remove record from Person
-//        dao.delete(2L);
- 
-        // And finally count records
-        System.out.println("Count records: " + dao.count());
- 
-        context.close();
-    }
+	public static void main(String[] args) {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+				"applicationContext.xml");
+
+		addDataToDB(context);
+
+		CategoryDao categoryDao = context.getBean(CategoryDao.class);
+
+		AdDao adDao = context.getBean(AdDao.class);
+
+		Category categoriesAuto = categoryDao.findByName("Autoturisme").get(0);
+
+		for (Ad ad : adDao.findByCategory(categoriesAuto)) {
+			System.out.println(ad.getName() + " " + ad.getDescrption() + " "
+					+ ad.getPrice());
+		}
+
+		AdKeywordDao adKeywordDao = context.getBean(AdKeywordDao.class);
+
+		List<AdKeyword> adKeywordsMasina = adKeywordDao.findByKeyword("masina");
+
+		for (AdKeyword adKeyword : adKeywordsMasina) {
+			System.out.println(adKeyword.getKeyword() + " " + adKeyword.getId()
+					+ " " + adKeyword.getAd().getName());
+		}
+		
+
+		List<AdKeyword> adKeywords = adKeywordDao.findByAd(adDao.findOne((long) 14));
+
+		for (AdKeyword adKeyword : adKeywordsMasina) {
+			System.out.println(adKeyword.getKeyword() + " " + adKeyword.getId()
+					+ " " + adKeyword.getAd().getName());
+		}
+		
+
+		context.close();
+
+	}
+
+	private static void addDataToDB(ClassPathXmlApplicationContext context) {
+		Util.addDummyDataToDB(context);
+	}
+
 }
