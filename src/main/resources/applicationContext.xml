@@ -9,7 +9,7 @@
 				http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
 
 	<!-- Directory to scan for repository classes -->
-	<jpa:repositories base-package="com.ioan.dao" />
+	<jpa:repositories base-package="com.ioan.repository" />
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
