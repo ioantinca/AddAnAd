@@ -1,4 +1,4 @@
-package com.ioan.dao;
+package com.ioan.repository;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.ioan.model.Ad;
 import com.ioan.model.AdKeyword;
 
-public interface AdKeywordDao extends CrudRepository<AdKeyword, Long> {
+public interface AdKeywordRepository extends CrudRepository<AdKeyword, Long> {
 
 	public List<AdKeyword> findByKeyword(String keyword);
 	

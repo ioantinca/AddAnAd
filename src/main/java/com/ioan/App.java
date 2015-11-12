@@ -6,12 +6,12 @@ import javassist.compiler.ast.Keyword;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.ioan.dao.AdDao;
-import com.ioan.dao.AdKeywordDao;
-import com.ioan.dao.CategoryDao;
 import com.ioan.model.Ad;
 import com.ioan.model.AdKeyword;
 import com.ioan.model.Category;
+import com.ioan.repository.AdKeywordRepository;
+import com.ioan.repository.AdRepository;
+import com.ioan.repository.CategoryRepository;
 import com.ioan.util.Util;
 
 /**
@@ -25,9 +25,9 @@ public class App {
 
 		addDataToDB(context);
 
-		CategoryDao categoryDao = context.getBean(CategoryDao.class);
+		CategoryRepository categoryDao = context.getBean(CategoryRepository.class);
 
-		AdDao adDao = context.getBean(AdDao.class);
+		AdRepository adDao = context.getBean(AdRepository.class);
 
 		Category categoriesAuto = categoryDao.findByName("Autoturisme").get(0);
 
@@ -36,7 +36,7 @@ public class App {
 					+ ad.getPrice());
 		}
 
-		AdKeywordDao adKeywordDao = context.getBean(AdKeywordDao.class);
+		AdKeywordRepository adKeywordDao = context.getBean(AdKeywordRepository.class);
 
 		List<AdKeyword> adKeywordsMasina = adKeywordDao.findByKeyword("masina");
 

@@ -1,4 +1,4 @@
-package com.ioan.dao;
+package com.ioan.repository;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import com.ioan.model.Ad;
 import com.ioan.model.Category;
 
 
-public interface AdDao extends CrudRepository<Ad, Long> {
+public interface AdRepository extends CrudRepository<Ad, Long> {
 	
 	public List<Ad> findByCategory(Category category);
 

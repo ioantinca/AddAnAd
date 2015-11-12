@@ -2,21 +2,21 @@ package com.ioan.util;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.ioan.dao.AdDao;
-import com.ioan.dao.AdKeywordDao;
-import com.ioan.dao.CategoryDao;
 import com.ioan.model.Ad;
 import com.ioan.model.AdKeyword;
 import com.ioan.model.Category;
+import com.ioan.repository.AdKeywordRepository;
+import com.ioan.repository.AdRepository;
+import com.ioan.repository.CategoryRepository;
 
 public class Util {
 
 	public static void addDummyDataToDB(ClassPathXmlApplicationContext context) {
-		CategoryDao categoryDao = context.getBean(CategoryDao.class);
+		CategoryRepository categoryDao = context.getBean(CategoryRepository.class);
 
-		AdDao adDao = context.getBean(AdDao.class);
+		AdRepository adDao = context.getBean(AdRepository.class);
 
-		AdKeywordDao adKeywordDao = context.getBean(AdKeywordDao.class);
+		AdKeywordRepository adKeywordDao = context.getBean(AdKeywordRepository.class);
 		
 		Category auto = new Category("Auto");
 		categoryDao.save(auto);
