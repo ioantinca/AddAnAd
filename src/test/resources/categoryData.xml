@@ -1,0 +1,7 @@
+<dataset>
+    <category id="1" name="Auto"/>
+    <category id="2" name="Autoturisme" parentcategory_id="1"/>
+    <category id="3" name="Servicii" parentcategory_id="1"/>
+    <category id="4" name="Piese auto" parentcategory_id="3"/>
+    <category id="5" name="Service-uri" parentcategory_id="3"/>    
+</dataset>
