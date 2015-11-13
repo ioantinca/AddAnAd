@@ -22,15 +22,15 @@ public class Util {
 		categoryDao.save(auto);
 
 		Category autoturisme = new Category("Autoturisme");
-		autoturisme.setParentCategory(auto);
+		autoturisme.setParent(auto);
 
 		Category autoServicii = new Category("Servicii");
-		autoServicii.setParentCategory(auto);
+		autoServicii.setParent(auto);
 
 		Category pieseAuto = new Category("Piese auto");
-		pieseAuto.setParentCategory(autoServicii);
+		pieseAuto.setParent(autoServicii);
 		Category serviceAuto = new Category("Service-uri");
-		serviceAuto.setParentCategory(autoServicii);
+		serviceAuto.setParent(autoServicii);
 
 		categoryDao.save(autoturisme);
 		categoryDao.save(autoServicii);
@@ -41,16 +41,16 @@ public class Util {
 		categoryDao.save(imobiliare);
 
 		Category terenuri = new Category("terenuri");
-		terenuri.setParentCategory(imobiliare);
+		terenuri.setParent(imobiliare);
 
 		Category apartamente = new Category("apartamente");
-		apartamente.setParentCategory(imobiliare);
+		apartamente.setParent(imobiliare);
 
 		Category vanzare = new Category("Vanzare");
-		vanzare.setParentCategory(apartamente);
+		vanzare.setParent(apartamente);
 
 		Category chirie = new Category("Chirie");
-		chirie.setParentCategory(apartamente);
+		chirie.setParent(apartamente);
 
 		categoryDao.save(terenuri);
 		categoryDao.save(apartamente);
@@ -61,10 +61,10 @@ public class Util {
 		categoryDao.save(electronice);
 
 		Category telefoane = new Category("Telefoane");
-		telefoane.setParentCategory(electronice);
+		telefoane.setParent(electronice);
 
 		Category tablete = new Category("Tablete");
-		tablete.setParentCategory(electronice);
+		tablete.setParent(electronice);
 
 		categoryDao.save(telefoane);
 		categoryDao.save(tablete);

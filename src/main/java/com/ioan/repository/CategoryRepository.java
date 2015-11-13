@@ -13,7 +13,7 @@ public interface CategoryRepository extends CrudRepository<Category, Long> {
 	
 	public List<Category> findByName(String name);
 	
-	public List<Category> findByParentCategory(Category categoryParent);
+	public List<Category> findByParent(Category parentCategory);
 	
 
 }

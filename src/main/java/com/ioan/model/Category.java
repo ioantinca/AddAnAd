@@ -19,7 +19,7 @@ public class Category {
 	private String name;
 
 	@ManyToOne
-	private Category parentCategory;
+	private Category parent;
 	
 	public Category() {
 	}
@@ -45,12 +45,12 @@ public class Category {
 		this.name = name;
 	}
 
-	public Category getParentCategory() {
-		return parentCategory;
+	public Category getParent() {
+		return parent;
 	}
 
-	public void setParentCategory(Category parentCategory) {
-		this.parentCategory = parentCategory;
+	public void setParent(Category parent) {
+		this.parent = parent;
 	}
 
 	@Override
