@@ -1,10 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
    <!DOCTYPE dataset [
-   <!ELEMENT dataset (category*)>
+   <!ELEMENT dataset (category*,ad*,adkeyword*)>
    <!ELEMENT category EMPTY>
    <!ATTLIST category id CDATA #REQUIRED>
    <!ATTLIST category name CDATA #REQUIRED>
    <!ATTLIST category parent_id CDATA #REQUIRED>
+   
+   <!ELEMENT ad EMPTY>
+   <!ATTLIST ad id CDATA #REQUIRED>
+   <!ATTLIST ad name CDATA #REQUIRED>
+   <!ATTLIST ad description CDATA #REQUIRED>
+   <!ATTLIST ad price CDATA #REQUIRED>
+   <!ATTLIST ad category_id CDATA #REQUIRED>
+   <!ELEMENT adkeyword EMPTY>
+   <!ATTLIST adkeyword id CDATA #REQUIRED>
+   <!ATTLIST adkeyword keyword CDATA #REQUIRED>
+   <!ATTLIST adkeyword ad_id CDATA #REQUIRED>
+   
+   
 ]>
 <dataset>
 	<category id="1" name="Auto" />
@@ -12,5 +25,14 @@
 	<category id="3" name="Servicii" parent_id="1" />
 	<category id="4" name="Piese auto" parent_id="3" />
 	<category id="5" name="Service-uri" parent_id="3" />
+	<ad id="1" name="Mercedes" description="Vand Mercedes" price="1000"
+		category_id="2" />
+	<ad id="2" name="Audi" description="Vand Audi" price="1000"
+		category_id="2" />
+	<ad id="3" name="Service" description="Service Mercedes" price="0"
+		category_id="3" />
+	<adkeyword id="1" keyword="mercedes" ad_id="1" />
+	<adkeyword id="2" keyword="masina" ad_id="1" />
+	<adkeyword id="3" keyword="masina" ad_id="2" />
 
 </dataset>
