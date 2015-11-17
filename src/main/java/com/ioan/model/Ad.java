@@ -12,7 +12,7 @@ public class Ad {
 	@GeneratedValue
 	private Long id;
 	private String name;
-	private String descrption;
+	private String description;
 	private Double price;
 
 	@ManyToOne
@@ -24,7 +24,7 @@ public class Ad {
 	
 	public Ad(String name, String description, Double price) {
 		this.name = name;
-		this.descrption = description;
+		this.description = description;
 		this.price = price;
 	}
 
@@ -44,12 +44,12 @@ public class Ad {
 		this.name = name;
 	}
 
-	public String getDescrption() {
-		return descrption;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescrption(String descrption) {
-		this.descrption = descrption;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Double getPrice() {

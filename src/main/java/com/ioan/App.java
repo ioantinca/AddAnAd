@@ -32,7 +32,7 @@ public class App {
 		Category categoriesAuto = categoryDao.findByName("Autoturisme").get(0);
 
 		for (Ad ad : adDao.findByCategory(categoriesAuto)) {
-			System.out.println(ad.getName() + " " + ad.getDescrption() + " "
+			System.out.println(ad.getName() + " " + ad.getDescription() + " "
 					+ ad.getPrice());
 		}
 
