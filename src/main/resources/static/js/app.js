@@ -1,5 +1,25 @@
 var taskManagerModule = angular.module('taskManagerApp', ['ngAnimate']);
 
+taskManagerModule.controller('categoryManagerController', function($scope, $http) {
+	var urlBase="";
+	$http.defaults.headers.post["Content-Type"] = "application/json";
+
+    function findParentCategories() {
+        $http.get(urlBase + '/categories/search/findByParent?parent=').
+            success(function (data) {
+                if (data._embedded != undefined) {
+                    $scope.categories = data._embedded.categories;
+                } else {
+                    $scope.categories = [];
+                }
+            });
+    }
+
+    findParentCategories();
+    
+});
+
+
 taskManagerModule.controller('taskManagerController', function ($scope,$http) {
 	
 	var urlBase="";
