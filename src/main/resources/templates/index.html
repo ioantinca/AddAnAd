@@ -17,17 +17,36 @@
 
 	<h4 class="page-title">AddAnAd</h4>
 	<div ng-controller="categoryManagerController">
-		<div id="categories-panel" class="fadein fadeout showpanel panel">
+		<div id="categories-panel" class="fadein fadeout showpanel panel"
+			ng-hide="categorySelected">
 			<div class="panel-body">
 				<div class="task" ng-repeat="category in categories">
-					<button class="btn-panel">{{category.name}}</button>
+					<button ng-click="selectParentCategory(category)" class="btn-panel">{{category.name}}</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="child-category-panel" class="fadein fadeout addpanel panel"
+			ng-show="categorySelected">
+			<div class="panel-heading">
+				<div class="panel-heading-controls">
+					<button class="btn-panel">Up</button>
+					<span ng-repeat="category in categories">
+						<button ng-click="selectParentCategory(category)"
+							class="btn-panel">{{category.name}}</button>
+					</span>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="task" ng-repeat="category in childCategories">
+					<button ng-click="selectParentCategory(category)" class="btn-panel">{{category.name}}</button>
 				</div>
 			</div>
 		</div>
 
 	</div>
 
-	<div ng-controller="taskManagerController">
+	<!-- <div ng-controller="taskManagerController">
 		<div id="task-panel" class="fadein fadeout showpanel panel"
 			ng-show="toggle">
 			<div class="panel-heading">
@@ -94,14 +113,14 @@
 							<td>Task Status:</td>
 							<td><select ng-model="taskStatus"
 								ng-options="status as status for status in statuses">
-									<option value="">-- Select --</option>
+									<option value="">- Select -</option>
 							</select></td>
 						</tr>
 						<tr>
 							<td>Task Priority:</td>
 							<td><select ng-model="taskPriority"
 								ng-options="priority as priority for priority in priorities">
-									<option value="">-- Select --</option>
+									<option value="">- Select -</option>
 							</select></td>
 						</tr>
 						<tr>
@@ -113,6 +132,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> 
+	 -->
 </body>
 </html>
