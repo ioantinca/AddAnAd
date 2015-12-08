@@ -3,3 +3,8 @@ INSERT INTO category VALUES (2, 'Autoturisme', 1);
 INSERT INTO category VALUES (3, 'Servicii', 1);
 INSERT INTO category VALUES (4, 'Piese auto', 3);
 INSERT INTO category VALUES (5, 'Service-uri', 3);
+INSERT INTO category VALUES (6, 'Imobiliare', NULL);
+INSERT INTO category VALUES (7, 'Terenuri', 6);
+INSERT INTO category VALUES (8, 'Apartamente', 6);
+INSERT INTO category VALUES (9, 'Vanzare', 8);
+INSERT INTO category VALUES (10, 'Inchiriere', 8);
