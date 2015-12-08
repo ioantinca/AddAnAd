@@ -96,7 +96,7 @@ public class RepositoriesTest {
 	public void searchAd_ByInexistentCategory() {
 
 		Category inexistentCategory = new Category("INEXISTENT");
-		inexistentCategory.setId(-1L);
+		inexistentCategory.setCategoryId(-1L);
 
 		List<Ad> adEntries = adRepository.findByCategory(inexistentCategory);
 
