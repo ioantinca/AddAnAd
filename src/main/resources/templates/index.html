@@ -30,16 +30,16 @@
 			ng-show="categorySelected">
 			<div class="panel-heading">
 				<div class="panel-heading-controls">
-					<button class="btn-panel">Up</button>
-					<span ng-repeat="category in categories">
-						<button ng-click="selectParentCategory(category)"
+					<button class="btn-panel" ng-click="up()">Up</button>
+					<span ng-repeat="category in selectedCategories">
+						<button ng-click="selectCategoryFromTop(category)"
 							class="btn-panel">{{category.name}}</button>
 					</span>
 				</div>
 			</div>
 			<div class="panel-body">
 				<div class="task" ng-repeat="category in childCategories">
-					<button ng-click="selectParentCategory(category)" class="btn-panel">{{category.name}}</button>
+					<button ng-click="selectCategory(category)" class="btn-panel">{{category.name}}</button>
 				</div>
 			</div>
 		</div>

@@ -16,7 +16,6 @@ taskManagerModule.controller('categoryManagerController', function($scope,
 				});
 	}
 
-
 	findParentCategories();
 
 	$scope.invertToggle = function() {
@@ -25,22 +24,55 @@ taskManagerModule.controller('categoryManagerController', function($scope,
 
 	function getChildCategories(category) {
 		$http.get(
-				urlBase + '/categories/search/findByParent?parent=' + category.categoryId)
-				.success(function(data) {
-					if (data._embedded != undefined) {
-						$scope.childCategories = data._embedded.categories;
-					} else {
-						$scope.childCategories = [];
-					}
-				});
+				urlBase + '/categories/search/findByParent?parent='
+						+ category.categoryId).success(function(data) {
+			if (data._embedded != undefined) {
+				$scope.childCategories = data._embedded.categories;
+			} else {
+				$scope.childCategories = [];
+			}
+		});
 	}
 
 	$scope.selectParentCategory = function(category) {
 		$scope.selectedCategories = [];
+		$scope.selectCategory(category);
+	}
+
+	$scope.selectCategory = function(category) {
 		$scope.selectedCategories.push(category);
 		$scope.categorySelected = true;
-
 		getChildCategories(category);
+	}
+
+	$scope.selectCategoryFromTop = function(category) {
+
+		var i = $scope.selectedCategories.length;
+		if ($scope.selectedCategories[i - 1] != category) {
+
+			while ($scope.selectedCategories[i - 1] != category) {
+				$scope.selectedCategories.splice(i - 1);
+				i--;
+			}
+
+			getChildCategories(category);
+		}
+	}
+
+	$scope.up = function() {
+
+		length = $scope.selectedCategories.length;
+		if (length < 1) {
+			return;
+		}
+		if (length == 1) {
+			$scope.selectedCategories = [];
+			$scope.categorySelected = false;
+			findParentCategories();
+		} else {
+			category = $scope.selectedCategories[length - 2];
+			$scope.selectCategoryFromTop(category);
+		}
 	}
 
 });
