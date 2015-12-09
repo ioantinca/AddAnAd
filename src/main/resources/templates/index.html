@@ -17,7 +17,7 @@
 
 	<h4 class="page-title">AddAnAd</h4>
 	<div ng-controller="categoryManagerController">
-		<div id="categories-panel" class="fadein fadeout showpanel panel"
+		<div id="main-panel" class="fadein fadeout showpanel panel"
 			ng-hide="categorySelected">
 			<div class="panel-body">
 				<div class="task" ng-repeat="category in categories">
@@ -26,7 +26,7 @@
 			</div>
 		</div>
 
-		<div id="child-category-panel" class="fadein fadeout addpanel panel"
+		<div id="categories-panel" class="fadein fadeout addpanel panel"
 			ng-show="categorySelected">
 			<div class="panel-heading">
 				<div class="panel-heading-controls">
@@ -37,11 +37,13 @@
 					</span>
 				</div>
 			</div>
-			<div class="panel-body">
+			<div id="child-categories-panel" class="panel-body" ng-show="true">
+				<i class="panel-title-icon fa"></i> <span class="panel-title">Categories</span>
 				<div class="task" ng-repeat="category in childCategories">
 					<button ng-click="selectCategory(category)" class="btn-panel">{{category.name}}</button>
 				</div>
 			</div>
+			<div id="ads-panel" class="panel-body" ng-show="false"></div>
 		</div>
 
 	</div>
