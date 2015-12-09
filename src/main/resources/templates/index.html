@@ -37,13 +37,16 @@
 					</span>
 				</div>
 			</div>
-			<div id="child-categories-panel" class="panel-body" ng-show="true">
-				<i class="panel-title-icon fa"></i> <span class="panel-title">Categories</span>
+			<div id="child-categories-panel" class="panel-body"
+				ng-hide="leafCategory">
+				<span class="panel-title">Categories</span>
 				<div class="task" ng-repeat="category in childCategories">
 					<button ng-click="selectCategory(category)" class="btn-panel">{{category.name}}</button>
 				</div>
 			</div>
-			<div id="ads-panel" class="panel-body" ng-show="false"></div>
+			<div class="panel-body" ng-show="leafCategory">
+				<span class="panel-title">Ads</span>
+			</div>
 		</div>
 
 	</div>

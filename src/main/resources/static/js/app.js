@@ -28,10 +28,37 @@ taskManagerModule.controller('categoryManagerController', function($scope,
 						+ category.categoryId).success(function(data) {
 			if (data._embedded != undefined) {
 				$scope.childCategories = data._embedded.categories;
+				checkLeaf(category);
 			} else {
 				$scope.childCategories = [];
+				checkLeaf(category);
 			}
 		});
+	}
+
+	function checkLeaf(category) {
+		if ($scope.childCategories.length == 0) {
+			$scope.leafCategory = true;
+			findAds(category);
+		} else {
+			$scope.leafCategory = false;
+		}
+	}
+
+	function findAds(category) {
+		$http.get(
+				urlBase + '/ads/search/findByCategory?category='
+						+ category.categoryId).success(function(data) {
+			if (data._embedded != undefined) {
+				$scope.ads = data._embedded.ads;
+			} else {
+				$scope.ads = [];
+			}
+		});
+	}
+
+	function getChilds(category) {
+		getChildCategories(category);
 	}
 
 	$scope.selectParentCategory = function(category) {
@@ -42,7 +69,7 @@ taskManagerModule.controller('categoryManagerController', function($scope,
 	$scope.selectCategory = function(category) {
 		$scope.selectedCategories.push(category);
 		$scope.categorySelected = true;
-		getChildCategories(category);
+		getChilds(category);
 	}
 
 	$scope.selectCategoryFromTop = function(category) {
@@ -55,7 +82,7 @@ taskManagerModule.controller('categoryManagerController', function($scope,
 				i--;
 			}
 
-			getChildCategories(category);
+			getChilds(category);
 		}
 	}
 
