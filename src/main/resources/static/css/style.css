@@ -59,6 +59,12 @@ body
 	margin-bottom: -200px;
 	float: left;
 }
+.panel-heading-right
+{
+	margin-top: -2px;
+	margin-bottom: -200px;
+	float: right;
+}
 .btn-panel
 {
 	background-color:#f3818d;
