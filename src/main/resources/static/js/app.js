@@ -5,7 +5,7 @@ taskManagerModule
 				'categoryManagerController',
 				function($scope, $http) {
 					var urlBase = "";
-					$scope.toggle = true;
+					$scope.newAdPanelToggle = true;
 					$scope.adName = "";
 					$scope.adDesc = "";
 					$scope.adPrice = "";
@@ -45,16 +45,20 @@ taskManagerModule
 										console.log("Might be good to GET "
 												+ newAdUri
 												+ " and append the task.");
-										// Refetching EVERYTHING every time can
-										// get expensive over time
-										// Better solution would be to
-										// $http.get(headers()["location"]) and
-										// add it to the list
-//										findParentCategories();
+										$scope.adName = "";
+										$scope.adDesc = "";
+										$scope.adPrice = "";
+										findAds($scope.currentCategory);
+										$scope.invertAdPanelToggle();
 									});
 						}
 					};
 
+					
+					$scope.invertAdPanelToggle = function() {
+						$scope.newAdPanelToggle = !$scope.newAdPanelToggle;
+					}
+					
 					$scope.invertToggle = function() {
 						$scope.categorySelected = !$scope.categorySelected;
 					}

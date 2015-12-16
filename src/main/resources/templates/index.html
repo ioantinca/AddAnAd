@@ -47,18 +47,23 @@
 			<div class="panel-body" ng-show="leafCategory">
 				<span class="panel-title">Ads</span>
 				<div class="panel-heading-right">
-					<button ng-click="toggle = !toggle" class="btn-panel">Add
-						New Ad</button>
+					<button ng-click="newAdPanelToggle = !newAdPanelToggle"
+						class="btn-panel">Add New Ad</button>
 				</div>
 			</div>
+			<!-- repeat ads  -->
+			<div class="task" ng-repeat="ad in ads" ng-show="leafCategory">
+				<button ng-click="selectCategory(category)" class="btn-panel">{{ad.name}}</button>
+				
+			</div>
 			<div id="add-task-panel" class="fadein fadeout addpanel panel"
-				ng-hide="toggle">
+				ng-hide="newAdPanelToggle">
 				<div class="panel-heading">
 					<i class="panel-title-icon fa fa-plus"></i> <span
-						class="panel-title">Add Task</span>
+						class="panel-title">Add Ad</span>
 					<div class="panel-heading-right">
-						<button ng-click="toggle = !toggle" class="btn-panel">Show
-							All Tasks</button>
+						<button ng-click="newAdPanelToggle = !newAdPanelToggle"
+							class="btn-panel">Show All Tasks</button>
 					</div>
 				</div>
 				<div class="panel-body">
