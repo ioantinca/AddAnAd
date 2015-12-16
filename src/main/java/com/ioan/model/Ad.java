@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.data.rest.core.annotation.RestResource;
+
 @Entity
 public class Ad {
 
@@ -16,6 +18,7 @@ public class Ad {
 	private String description;
 	private Double price;
 
+	@RestResource(exported = false)
 	@ManyToOne
 	private Category category;
 

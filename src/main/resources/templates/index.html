@@ -51,6 +51,41 @@
 						New Ad</button>
 				</div>
 			</div>
+			<div id="add-task-panel" class="fadein fadeout addpanel panel"
+				ng-hide="toggle">
+				<div class="panel-heading">
+					<i class="panel-title-icon fa fa-plus"></i> <span
+						class="panel-title">Add Task</span>
+					<div class="panel-heading-right">
+						<button ng-click="toggle = !toggle" class="btn-panel">Show
+							All Tasks</button>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class="task">
+						<table class="add-task">
+							<tr>
+								<td>Name:</td>
+								<td><input type="text" ng-model="adName" /></td>
+							</tr>
+							<tr>
+								<td>Description:</td>
+								<td><input type="text" ng-model="adDesc" /></td>
+							</tr>
+							<tr>
+								<td>Price:</td>
+								<td><input type="text" ng-model="adPrice" /></td>
+							</tr>
+
+							<tr>
+								<td><br />
+									<button ng-click="addNewAd()" class="btn-panel-big">Add
+										New Ad</button></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 
 	</div>
